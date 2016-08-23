@@ -181,18 +181,23 @@
   margin-right: 0;
   margin-left: 0; }
 
-body {
-  font-family: 'Josefin Sans', sans-serif !important;
-  font-size: 16px; }
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li.unreadNotification > a {
+  background: #ececec; }
+
+.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i.noBeforeEnvelope:before {
+  content: "\e04a" !important; }
+
+.page-header.navbar .menu-toggler.sidebar-toggler {
+  margin-top: 20px; }
+
+.page-sidebar-closed .page-content-wrapper .page-content.errorPageContent {
+  margin-left: 0 !important; }
 
 .login .copyright {
   font-size: 14px; }
 
 .form-control, output, .btn, .login .content .forget-password {
   font-size: 16px; }
-
-.btn-sm {
-  font-size: 14px; }
 
 .login .content {
   margin-top: 0; }
@@ -205,88 +210,6 @@ body {
 
 .login .content .has-error .form-control {
   border-color: #e73d4a; }
-
-.page-header.navbar .menu-toggler.sidebar-toggler {
-  margin-top: 20px; }
-
-.page-sidebar-closed .page-content-wrapper .page-content.errorPageContent {
-  margin-left: 0 !important; }
-
-.toast-bottom-right {
-  bottom: 32px; }
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-  line-height: 34px; }
-
-.select2-container .select2-selection--single {
-  height: 34px; }
-
-.fetchRow, .deleteRow {
-  display: inline-block; }
-
-.noBorderInput {
-  border: none; }
-
-.profile-usertitle-job {
-  text-transform: initial; }
-
-em.underlined {
-  display: inline-block;
-  border-bottom: 1px solid #333; }
-
-.feeds li .col2 {
-  width: 150px;
-  margin-left: -150px; }
-
-.feeds li a {
-  color: #ffffff; }
-
-.notificationDescription {
-  display: inline-block;
-  margin-top: 10px; }
-
-.notificationName {
-  font-size: 13px;
-  color: #5b9bd1;
-  font-weight: bold; }
-
-.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li.unreadNotification > a {
-  background: #ececec; }
-
-.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i.noBeforeEnvelope:before {
-  content: "\e04a" !important; }
-
-.post.unreadMessage {
-  background: #475763 !important; }
-
-.sendingGifContainer {
-  position: absolute;
-  bottom: 40px;
-  left: 11px;
-  right: 11px;
-  background: transparent;
-  padding: 4px 0; }
-
-#sendingGif {
-  opacity: 0;
-  width: 50px; }
-
-#sendingGif.active {
-  opacity: 1; }
-
-.loadEarlierMessages {
-  text-align: center;
-  margin-top: 20px; }
-  .loadEarlierMessages button#loadEarlierMessages {
-    display: inline-block;
-    color: #90a1af;
-    background: #36424c;
-    padding: 4px 12px;
-    text-align: center;
-    font-size: 10px;
-    border: none; }
-    .loadEarlierMessages button#loadEarlierMessages:hover {
-      text-decoration: none; }
 
 /* Real Person jQuery plugin styles v2.0.1. */
 .realperson-challenge {
@@ -320,5 +243,82 @@ em.underlined {
 input#defaultReal {
   width: 60%;
   float: left; }
+
+.toast-bottom-right {
+  bottom: 32px; }
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 34px; }
+
+.select2-container .select2-selection--single {
+  height: 34px; }
+
+.profile-usertitle-job {
+  text-transform: initial; }
+
+.feeds li .col2 {
+  width: 150px;
+  margin-left: -150px; }
+
+.feeds li a {
+  color: #ffffff; }
+
+.notificationDescription {
+  display: inline-block;
+  margin-top: 10px; }
+
+.notificationName {
+  font-size: 13px;
+  color: #5b9bd1;
+  font-weight: bold; }
+
+.sendingGifContainer {
+  position: absolute;
+  bottom: 40px;
+  left: 11px;
+  right: 11px;
+  background: transparent;
+  padding: 4px 0; }
+
+#sendingGif {
+  opacity: 0;
+  width: 50px; }
+
+#sendingGif.active {
+  opacity: 1; }
+
+.post.unreadMessage {
+  background: #475763 !important; }
+
+.loadEarlierMessages {
+  text-align: center;
+  margin-top: 20px; }
+  .loadEarlierMessages button#loadEarlierMessages {
+    display: inline-block;
+    color: #90a1af;
+    background: #36424c;
+    padding: 4px 12px;
+    text-align: center;
+    font-size: 10px;
+    border: none; }
+    .loadEarlierMessages button#loadEarlierMessages:hover {
+      text-decoration: none; }
+
+body {
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-size: 16px; }
+
+.btn-sm {
+  font-size: 14px; }
+
+.fetchRow, .deleteRow {
+  display: inline-block; }
+
+.noBorderInput {
+  border: none; }
+
+em.underlined {
+  display: inline-block;
+  border-bottom: 1px solid #333; }
 
 /*# sourceMappingURL=style.css.map */

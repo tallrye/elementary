@@ -37,12 +37,4 @@
     </ul>
 </li>
 <!-- END NOTIFICATION DROPDOWN -->
-<!-- BEGIN INBOX DROPDOWN -->
-<!-- <li class="dropdown dropdown-quick-sidebar-toggler" >
-    <a href="javascript:;" class="dropdown-toggle">
-        <i class="icon-bubbles noBeforeEnvelope"></i>
-        <span class="badge badge-default"> 4 </span>
-    </a>
-</li> -->
 
-<!-- END INBOX DROPDOWN -->

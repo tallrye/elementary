@@ -1,0 +1,46 @@
+.notificationDescription{
+    display: inline-block;
+    margin-top: 10px;
+}
+.notificationName{
+    font-size:13px;
+    color:#5b9bd1; 
+    font-weight:bold;
+}
+
+.sendingGifContainer{
+    position:absolute;
+    bottom: 40px; 
+    left:11px;
+    right: 11px;
+    background:transparent;
+    padding:4px 0;
+}
+#sendingGif{    
+    opacity: 0;
+    width:50px;
+}
+#sendingGif.active{    
+    opacity: 1;
+}
+
+.post.unreadMessage{
+    background:#475763 !important;
+}
+
+.loadEarlierMessages{
+    text-align: center;
+    margin-top: 20px;
+    button#loadEarlierMessages{
+        display: inline-block;
+        color:#90a1af;
+        background:#36424c;
+        padding:4px 12px;
+        text-align: center;
+        font-size:10px;
+        border:none;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
