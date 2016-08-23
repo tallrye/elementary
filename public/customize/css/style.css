@@ -1,0 +1,324 @@
+@media (max-width: 767px) {
+  .hidden-xs,
+  tr.hidden-xs,
+  th.hidden-xs,
+  td.hidden-xs {
+    display: none !important; } }
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm,
+  tr.hidden-sm,
+  th.hidden-sm,
+  td.hidden-sm {
+    display: none !important; } }
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md,
+  tr.hidden-md,
+  th.hidden-md,
+  td.hidden-md {
+    display: none !important; } }
+@media (min-width: 1200px) {
+  .hidden-lg,
+  tr.hidden-lg,
+  th.hidden-lg,
+  td.hidden-lg {
+    display: none !important; } }
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  *zoom: 1; }
+
+.relative {
+  position: relative; }
+
+.fullWidth {
+  width: 100%; }
+
+.negativeIndent {
+  text-indent: -999999px; }
+
+.makeDiv {
+  display: inline-block; }
+
+.centeredImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.reverseFloat {
+  float: right; }
+  @media only screen and (max-width: 767px) {
+    .reverseFloat {
+      float: none; } }
+
+.italic {
+  font-style: italic; }
+
+.noMargin {
+  margin: 0; }
+
+.noMarginTop {
+  margin-top: 0; }
+
+.noMarginBottom {
+  margin-bottom: 0; }
+
+.noMarginLeft {
+  margin-left: 0; }
+
+.noMarginRight {
+  margin-right: 0; }
+
+.noPadding {
+  padding: 0; }
+
+.noPaddingTop {
+  padding-top: 0; }
+
+.noPaddingBottom {
+  padding-bottom: 0; }
+
+.noPaddingLeft {
+  padding-left: 0; }
+
+.noPaddingRight {
+  padding-right: 0; }
+
+.grayscale {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  /* For Webkit browsers */
+  filter: gray;
+  /* For IE 6 - 9 */
+  -webkit-transition: all .4s ease;
+  /* Transition for Webkit browsers */ }
+
+.grayscale:hover {
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+  filter: none; }
+
+.invertscale {
+  filter: invert(50%);
+  -webkit-filter: invert(50%);
+  /* For Webkit browsers */
+  filter: gray;
+  /* For IE 6 - 9 */
+  -webkit-transition: all .4s ease;
+  /* Transition for Webkit browsers */ }
+
+.invertscale:hover {
+  filter: invert(0%);
+  -webkit-filter: invert(0%);
+  filter: none; }
+
+/* columns of same height styles */
+.container-xs-height {
+  display: table;
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.row-xs-height {
+  display: table-row; }
+
+.col-xs-height {
+  display: table-cell;
+  float: none; }
+
+@media (min-width: 768px) {
+  .container-sm-height {
+    display: table;
+    padding-left: 0px;
+    padding-right: 0px; }
+
+  .row-sm-height {
+    display: table-row; }
+
+  .col-sm-height {
+    display: table-cell;
+    float: none; } }
+@media (min-width: 992px) {
+  .container-md-height {
+    display: table;
+    padding-left: 0px;
+    padding-right: 0px; }
+
+  .row-md-height {
+    display: table-row; }
+
+  .col-md-height {
+    display: table-cell;
+    float: none; } }
+@media (min-width: 1200px) {
+  .container-lg-height {
+    display: table;
+    padding-left: 0px;
+    padding-right: 0px; }
+
+  .row-lg-height {
+    display: table-row; }
+
+  .col-lg-height {
+    display: table-cell;
+    float: none; } }
+/* vertical alignment styles */
+.col-top {
+  vertical-align: top; }
+
+.col-middle {
+  vertical-align: middle; }
+
+.col-bottom {
+  vertical-align: bottom; }
+
+.rowNo, .contNo, .colNo {
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+  margin-left: 0; }
+
+body {
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-size: 16px; }
+
+.login .copyright {
+  font-size: 14px; }
+
+.form-control, output, .btn, .login .content .forget-password {
+  font-size: 16px; }
+
+.btn-sm {
+  font-size: 14px; }
+
+.login .content {
+  margin-top: 0; }
+
+#absLogo {
+  position: absolute;
+  top: 6px;
+  left: 45px;
+  margin-top: 0; }
+
+.login .content .has-error .form-control {
+  border-color: #e73d4a; }
+
+.page-header.navbar .menu-toggler.sidebar-toggler {
+  margin-top: 20px; }
+
+.page-sidebar-closed .page-content-wrapper .page-content.errorPageContent {
+  margin-left: 0 !important; }
+
+.toast-bottom-right {
+  bottom: 32px; }
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 34px; }
+
+.select2-container .select2-selection--single {
+  height: 34px; }
+
+.fetchRow, .deleteRow {
+  display: inline-block; }
+
+.noBorderInput {
+  border: none; }
+
+.profile-usertitle-job {
+  text-transform: initial; }
+
+em.underlined {
+  display: inline-block;
+  border-bottom: 1px solid #333; }
+
+.feeds li .col2 {
+  width: 150px;
+  margin-left: -150px; }
+
+.feeds li a {
+  color: #ffffff; }
+
+.notificationDescription {
+  display: inline-block;
+  margin-top: 10px; }
+
+.notificationName {
+  font-size: 13px;
+  color: #5b9bd1;
+  font-weight: bold; }
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-extended .dropdown-menu .dropdown-menu-list > li.unreadNotification > a {
+  background: #ececec; }
+
+.page-header .top-menu .dropdown-quick-sidebar-toggler > .dropdown-toggle i.noBeforeEnvelope:before {
+  content: "\e04a" !important; }
+
+.post.unreadMessage {
+  background: #475763 !important; }
+
+.sendingGifContainer {
+  position: absolute;
+  bottom: 40px;
+  left: 11px;
+  right: 11px;
+  background: transparent;
+  padding: 4px 0; }
+
+#sendingGif {
+  opacity: 0;
+  width: 50px; }
+
+#sendingGif.active {
+  opacity: 1; }
+
+.loadEarlierMessages {
+  text-align: center;
+  margin-top: 20px; }
+  .loadEarlierMessages button#loadEarlierMessages {
+    display: inline-block;
+    color: #90a1af;
+    background: #36424c;
+    padding: 4px 12px;
+    text-align: center;
+    font-size: 10px;
+    border: none; }
+    .loadEarlierMessages button#loadEarlierMessages:hover {
+      text-decoration: none; }
+
+/* Real Person jQuery plugin styles v2.0.1. */
+.realperson-challenge {
+  display: block;
+  color: #000;
+  width: 40%;
+  float: right; }
+
+.realperson-text {
+  font-family: "Courier New",monospace !important;
+  font-size: 5px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 3px;
+  text-align: right; }
+
+.realperson-regen {
+  padding-top: 4px;
+  font-size: 12px;
+  text-align: right;
+  cursor: pointer;
+  margin-bottom: 12px; }
+
+.realperson-disabled {
+  opacity: 0.5;
+  filter: Alpha(Opacity=50); }
+
+.realperson-disabled .realperson-regen {
+  cursor: default; }
+
+input#defaultReal {
+  width: 60%;
+  float: left; }
+
+/*# sourceMappingURL=style.css.map */
