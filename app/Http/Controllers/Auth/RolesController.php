@@ -36,9 +36,7 @@ class RolesController extends Controller
      */
     public function __construct() {
         parent::__construct();
-        if(Auth::user() && !Auth::user()->roles[0]->permissions->contains('name','manage_roles')){
-            abort('403');
-        }
+        parent::checkPermission('manage_roles');
     }
 
     /**
@@ -113,14 +111,11 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-    	$permissions = Permission::all();
-    	$role = Role::findOrFail($id);
         if($id == 1 && \Auth::user()->id != 1){
             abort('403');
         }
-    	$existing = $role->permissions;
-    	$nonexisting = $permissions->diff($existing);
-        return view('auth.roles.edit', compact('role', 'existing', 'nonexisting'));
+        $role = Role::findOrFail($id);
+        return view('auth.roles.edit', compact('role'));
     }
 
     /**
@@ -205,12 +200,11 @@ class RolesController extends Controller
     public function search($id, Request $request){
         $user = User::findOrFail($id);
         $allroles = Role::where('name', 'like', '%'.$request->get('q').'%')->get();
-        $roles = $allroles->diff($user->roles);
 
-        $items = array();
-        foreach($roles as $p){
-            array_push($items, ['id' => $p->id, 'text' => $p->name]);
+        $roles = array();
+        foreach($allroles->diff($user->roles) as $role){
+            array_push($roles, ['id' => $role->id, 'text' => $role->name]);
         }
-        return $items;
+        return $roles;
     }
 }

@@ -7,11 +7,11 @@
     <!-- BEGIN HEAD -->
     <head>
         <meta charset="utf-8" />
-        <title>{{ Config::get('project.name') }}</title>
+        <title>{{ config('project.name') }}</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="{{ Config::get('project.description') }}" name="description" />
-        <meta content="{{ Config::get('project.architect') }}" name="author" />
+        <meta content="{{ config('project.description') }}" name="description" />
+        <meta content="{{ config('project.architect') }}" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300i,400,600,700&subset=latin-ext" rel="stylesheet">
         <link href="{{ url('public/assets/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
@@ -51,7 +51,7 @@
             @yield('content')
          
         </div>
-        <div class="copyright"> 2016 &copy; <a target="_blank" href="{{ Config::get('project.clientWebsite') }}">{{ Config::get('project.clientName') }}</div>
+        <div class="copyright"> 2016 &copy; <a target="_blank" href="{{ config('project.clientWebsite') }}">{{ config('project.clientName') }}</div>
         <!--[if lt IE 9]>
 <script src="{{ url('public/assets/global/plugins/respond.min.js') }}"></script>
 <script src="{{ url('public/assets/global/plugins/excanvas.min.js') }}"></script> 

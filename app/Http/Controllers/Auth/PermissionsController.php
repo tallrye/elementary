@@ -29,10 +29,8 @@ class PermissionsController extends Controller
      * @return  \Illuminate\Foundation\Application abort
      */
     public function __construct() {
-        if(Auth::user() && !Auth::user()->roles[0]->permissions->contains('name','manage_permissions')){
-            abort('403');
-        }
         parent::__construct();
+        parent::checkPermission('manage_permissions');
     }
 
     /**
@@ -142,12 +140,11 @@ class PermissionsController extends Controller
     public function search($id, Request $request){
         $permissions = Permission::where('name', 'like', '%'.$request->get('q').'%')->get();
         $role = Role::findOrFail($id);
-        $nonexisting = $permissions->diff($role->permissions);
 
-        $items = array();
-        foreach($nonexisting as $p){
-            array_push($items, ['id' => $p->id, 'text' => $p->name]);
+        $nonexistingPermissions = array();
+        foreach($permissions->diff($role->permissions) as $permisson){
+            array_push($nonexistingPermissions, ['id' => $permisson->id, 'text' => $permisson->name]);
         }
-        return $items;
+        return $nonexistingPermissions;
     }
 }

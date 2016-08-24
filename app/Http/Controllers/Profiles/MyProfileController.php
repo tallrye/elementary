@@ -96,13 +96,12 @@ class MyProfileController extends Controller
      * @return  \Illuminate\Http\Response
      */
     public function updatemyphoto(Request $request){
-        if(parent::cropAndUploadProfilePhoto($request->user()->profile_id, $request)){
+        if(cropAndUploadProfilePhoto($request->user()->profile_id, $request)){
             session()->flash('success', 'Profil fotoğrafı güncellendi');
             return redirect()->back();
-        }else{
-            session()->flash('danger', 'Sadece .jpg ve .png formatlarında görsel yükleyebilirsiniz.');
-            return redirect()->back();
         }
+        session()->flash('danger', 'Sadece .jpg ve .png formatlarında görsel yükleyebilirsiniz.');
+        return redirect()->back();
     }
 
 }

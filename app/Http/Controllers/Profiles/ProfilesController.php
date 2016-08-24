@@ -13,7 +13,6 @@ use App\Models\Notifications\Notification;
 use App\UserServer;
 use Datatables;
 use File;
-use Image;
 use LaravelPusher;
 use DB;
 
@@ -39,9 +38,7 @@ class ProfilesController extends Controller
      */
     public function __construct() {
         parent::__construct();
-        if(Auth::user() && !Auth::user()->roles[0]->permissions->contains('name','manage_users')){
-            abort('403');
-        }
+        parent::checkPermission('manage_users');
     }
 
     /**
@@ -149,12 +146,11 @@ class ProfilesController extends Controller
     public function sendlink(Request $request)
     {
         $profile = Profile::findOrFail($request->get('id'));
-        $profile->isActivationSent = true;
-        $profile->save();
+        $profile->update(['isActivationSent' => true]);
         $link = url('register?name='.$profile->name.'&email='.$profile->email.'&profile='.$profile->id.'', $parameters = [], $secure = null);
         \Mail::send('auth.emails.registiration', ['name' => $profile->name, 'email' => $profile->email, 'link' => $link], function ($m) use($profile) {
             $m->to($profile->email, $profile->name);
-            $m->subject(\Config::get('project.name') . ' Aktivasyonu');
+            $m->subject(config('project.name') . ' Aktivasyonu');
         });
         session()->flash('success', 'Aktivasyon Linki Gönderildi.');
         return redirect()->back();
@@ -193,8 +189,7 @@ class ProfilesController extends Controller
     public function block(Request $request)
     {
         $profile = Profile::findOrFail($request->get('id'));
-        $profile->isBlocked = true;
-        $profile->save();
+        $profile->update(['isBlocked' => true]);
         session()->flash('success', 'Kullanıcı bloke edildi.');
         return redirect()->back();
     }
@@ -211,8 +206,7 @@ class ProfilesController extends Controller
     public function unblock(Request $request)
     {
         $profile = Profile::findOrFail($request->get('id'));
-        $profile->isBlocked = false;
-        $profile->save();
+        $profile->update(['isBlocked' => false]);
         session()->flash('success', 'Kullanıcı blokesi kaldırıldı.');
         return redirect()->back();
     }
@@ -278,13 +272,12 @@ class ProfilesController extends Controller
      * @return  \Illuminate\Http\Response
      */
     public function updatephoto(Request $request){
-        if(parent::cropAndUploadProfilePhoto($request->get('id'), $request)){
+        if(cropAndUploadProfilePhoto($request->get('id'), $request)){
             session()->flash('success', 'Profil fotoğrafı güncellendi');
             return redirect()->back();
-        }else{
-            session()->flash('danger', 'Sadece .jpg ve .png formatlarında görsel yükleyebilirsiniz.');
-            return redirect()->back();
         }
+        session()->flash('danger', 'Sadece .jpg ve .png formatlarında görsel yükleyebilirsiniz.');
+        return redirect()->back();
     }
 
     /**
@@ -293,7 +286,7 @@ class ProfilesController extends Controller
      * @param   \Illuminate\Http\Request  $request
      * @param   \DB
      * @param   \App\Profile $profile
-     * @param   \App\UserServer $userservers
+     * @param   \App\UserServer $userServers
      * @param   \App\User $user
      * @param   \LaravelPusher
      * @return  string
@@ -307,8 +300,8 @@ class ProfilesController extends Controller
         $user = User::where('profile_id',$request->get('id'))->first();
         DB::table('role_user')->where('user_id', '=', $user->id)->delete();
         User::destroy($user->id);
-        $userservers = UserServer::where('profile_id',$request->get('id'))->get();
-        foreach($userservers as $server){
+        $userServers = UserServer::where('profile_id',$request->get('id'))->get();
+        foreach($userServers as $server){
             $server->delete();
         }
         Profile::destroy($request->get('id'));

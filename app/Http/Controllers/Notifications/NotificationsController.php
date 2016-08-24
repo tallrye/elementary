@@ -42,8 +42,7 @@ class NotificationsController extends Controller
      */
     public function get(Request $request)
     {
-        $notifications = Notification::where('user_id', $request->get('user_id'))->where('isRead', 'false')->with('type')->get();
-        return $notifications;
+        return Notification::where('user_id', $request->get('user_id'))->where('isRead', 'false')->with('type')->get();
     }
 
     /**
@@ -56,10 +55,8 @@ class NotificationsController extends Controller
     public function read(Request $request)
     {
         $notification = Notification::findOrFail($request->get('id'));
-        $notification->isRead = true;
-        $notification->save();
-        $unread = Notification::where('user_id', Auth::user()->id)->where('isRead', 'false')->count();
-        return $unread;
+        $notification->update(['isRead' => true]);
+        return Notification::where('user_id', Auth::user()->id)->where('isRead', 'false')->count();
     }
 
     

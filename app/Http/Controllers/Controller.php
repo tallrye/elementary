@@ -13,10 +13,7 @@ use App\Models\Notifications\Notification;
 use App\Models\Chat\MessageNotification;
 use App\Models\Chat\Message;
 use App\Models\Chat\Conversation;
-use Carbon\Carbon;
 use View;
-use File;
-use Image;
 
 class Controller extends BaseController
 {
@@ -39,73 +36,60 @@ class Controller extends BaseController
      */
     public function __construct() {
         $this->middleware('auth');
-       
-        $ip = \Request::ip(); 
+        $authenticatedUser = Auth::user();
 
-        if(Auth::user() && Auth::user()->profile->isBlocked){
-		    abort('423');
-    	}
+        if($authenticatedUser){
+            $this->isBlocked($authenticatedUser);
+            $this->isIpAllowed($authenticatedUser);
+            
+            $notifications = Notification::where('user_id', $authenticatedUser->id)->orderBy('created_at', 'DESC')->limit(10)->get();
+            $unreadNotificationCount = Notification::where('user_id', $authenticatedUser->id)->where('isRead', 'false')->count();
+            $unreadMessageCount = Message::where('recipient_id', $authenticatedUser->id)->where('isRead', 'false')->count();
+            $chatters = User::where('id', '!=', $authenticatedUser->id)->get();
 
-        if(Auth::user() && Auth::user()->profile->servers->contains('address', $ip) == false){
-            abort('401');
+            View::share(array(
+                'notifications' => $notifications, 
+                'unreadNotificationCount' => $unreadNotificationCount, 
+                'unreadMessageCount' => $unreadMessageCount, 
+                'chatters' => $chatters, 
+            ));
         }
-
-      	$l = \Config::get('app.locale'); 
-        if(Auth::user()){
-            $notifications = Notification::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->limit(10)->get();
-            $unread = Notification::where('user_id', Auth::user()->id)->where('isRead', 'false')->count();
-            $unreadMsg = Message::where('recipient_id', Auth::user()->id)->where('isRead', 'false')->count();
-            $chatters = User::where('id', '!=', \Auth::user()->id)->get();
-        }else{
-            $notifications = '';
-            $unread = '';
-            $unreadMsg = '';
-            $chatters = '';
-        }
-		View::share(array(
-            'l' => $l, 
-            'notifications' => $notifications, 
-            'unread' => $unread, 
-            'unreadMsg' => $unreadMsg, 
-            'chatters' => $chatters, 
-		));
+        View::share(array(
+            'l' => config('app.locale'), 
+        ));
     }  
 
+
     /**
-     * Crop and upload a profile picture after deleting 
-     * existing photo of the user
+     * Check if given user is blocked.
      *
-     * @param   \Illuminate\Http\Request  $request
-     * @param   \Illuminate\Support\Facades\File
-     * @param   \Intervention\Image\Facades\Image
-     * @param   \App\Profile $profile
-     * @param   \Illuminate\Session\Store flash()
-     * @return  boolean
+     * @return  \Illuminate\Http\Response
      */
-    public static function cropAndUploadProfilePhoto($profile, $request){
-        $profile = Profile::find($profile);
-        $filename = time().'userprofile'.$profile->id;
-        File::delete($profile->photo);
+    private static function isBlocked($authenticatedUser){
+        if($authenticatedUser->profile->isBlocked){
+            abort('423');
+        }
+    }
 
-        $x = round($request->get('x'));
-        $y = round($request->get('y'));
-        $w = round($request->get('w'));
-        $h = round($request->get('h'));
+    /**
+     * Check if given user is allowed to access the application from his/her IP.
+     *
+     * @return  \Illuminate\Http\Response
+     */
+    private static function isIpAllowed($authenticatedUser){
+        if($authenticatedUser->profile->servers->contains('address', \Request::ip()) == false){
+            abort('401');
+        }
+    }
 
-        $image = Image::make($request->get('theFile'));
-        $mime = $image->mime();
-        if($mime == 'image/jpeg'){
-            $extension = '.jpg';
+    /**
+     * Check if given permission exists for user's role.
+     *
+     * @return  \Illuminate\Http\Response
+     */
+    public static function checkPermission($permissionName){
+        if(Auth::user() && !Auth::user()->roles[0]->permissions->contains('name', $permissionName)){
+            abort('403');
         }
-        elseif ($mime == 'image/png'){
-            $extension = '.png';
-        }
-        else{
-            return false;
-        }
-        $image->crop($w, $h, $x, $y)->save(public_path('storage/profiles/'.$filename.$extension));
-        $profile->photo = 'public/storage/profiles/'.$filename.$extension;
-        $profile->save();
-        return true;
     }
 }

@@ -2,7 +2,9 @@
 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <i class="icon-bell"></i>
-        <span class="badge badge-default" {{ ($unread > 0) ? '' : 'style=display:none;' }} id="unreadNotificationCount">{{ $unread }}</span>
+        <span class="badge badge-default" {{ ($unreadNotificationCount > 0) ? '' : 'style=display:none;' }} id="unreadNotificationCount">
+            {{ $unreadNotificationCount }}
+        </span>
     </a>
     <ul class="dropdown-menu">
         <li class="external">

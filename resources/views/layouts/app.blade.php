@@ -7,11 +7,11 @@
     <!-- BEGIN HEAD -->
     <head>
         <meta charset="utf-8" />
-        <title>{{ Config::get('project.name') }}</title>
+        <title>{{ config('project.name') }}</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="{{ Config::get('project.description') }}" name="description" />
-        <meta content="{{ Config::get('project.architect') }}" name="author" />
+        <meta content="{{ config('project.description') }}" name="description" />
+        <meta content="{{ config('project.architect') }}" name="author" />
         <script src="{{ url('public/assets/global/plugins/pace/pace.min.js') }}" type="text/javascript"></script>
         <link href="{{ url('public/assets/global/plugins/pace/themes/pace-theme-flash.css') }}" rel="stylesheet" type="text/css" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
@@ -104,7 +104,7 @@
                         <li class="dropdown dropdown-quick-sidebar-toggler">
                             <a href="javascript:;" class="dropdown-toggle">
                                 <i class="icon-bubbles noBeforeEnvelope"></i>
-                                <span class="badge badge-default"{{ ($unreadMsg > 0) ? '' : 'style=display:none;' }} id="unreadMessageCount">{{ $unreadMsg }}</span>
+                                <span class="badge badge-default"{{ ($unreadMessageCount > 0) ? '' : 'style=display:none;' }} id="unreadMessageCount">{{ $unreadMessageCount }}</span>
                             </a>
                         </li>
                         <!-- END QUICK SIDEBAR TOGGLER -->
@@ -139,7 +139,7 @@
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <div class="page-footer">
-            <div class="page-footer-inner"> 2016 &copy; <a target="_blank" href="{{ Config::get('project.clientWebsite') }}">{{ Config::get('project.clientName') }}
+            <div class="page-footer-inner"> 2016 &copy; <a target="_blank" href="{{ config('project.clientWebsite') }}">{{ config('project.clientName') }}
                 
             </div>
             <div class="scroll-to-top">

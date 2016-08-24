@@ -64,15 +64,15 @@
                 </div>
                 <div class="portlet-body form">
                     <table class="table table-light table-hover">
-                        @if($existing->isEmpty())
+                        @if($role->permissions->isEmpty())
                             Bu rol için verilmiş herhangi bir yetki yok.
                         @endif
-                        @foreach($existing as $current)
+                        @foreach($role->permissions as $permission)
                             <tr>
                                 {!! Form::open(array('route' => 'roles.removepermission')) !!}
                                     {!! Form::hidden('role_id', $role->id) !!}
-                                    {!! Form::hidden('permission_id', $current->id) !!}
-                                    <td><button type="submit" class="btn btn-sm red"><i class="fa fa-close"></i></button> {{ $current->name }} ({{ $current->description }})</td>
+                                    {!! Form::hidden('permission_id', $permission->id) !!}
+                                    <td><button type="submit" class="btn btn-sm red"><i class="fa fa-close"></i></button> {{ $permission->name }} ({{ $permission->description }})</td>
                                 {!! Form::close() !!}
                             </tr>
                         @endforeach

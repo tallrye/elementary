@@ -46,7 +46,7 @@
         @if(!count(App\User::all()))
         <div class="create-account">
             <p>
-                <a href="{{ url('/register?name='.Config::get('project.initialRegisterName').'&email='.Config::get('project.initialRegisterEmail').'&profile=1') }}" class="uppercase">Kayıt Ol</a>
+                <a href="{{ url('/register?name='.config('project.initialRegisterName').'&email='.config('project.initialRegisterEmail').'&profile=1') }}" class="uppercase">Kayıt Ol</a>
             </p>
         </div>
         @endif
