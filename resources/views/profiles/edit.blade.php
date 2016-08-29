@@ -54,54 +54,54 @@
                                 </div>
                                 <!-- /.modal-dialog -->
                             </div>
-                            @endif
+                        @endif
+                        @else
+                            @if($profile->isBlocked)
+                            <a class="btn btn-circle yellow btn-sm" data-toggle="modal" href="#blockProfile"> Blokeyi Kaldır </a>
+                            <div class="modal fade" id="blockProfile" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="">
+                                    <div class="modal-content">
+                                        {!! Form::open(array('route' => 'profiles.admin.unblock')) !!}
+                                        <input type="hidden" name="id" value="{{ $profile->id }}">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Kullanıcı Blokesini Kaldır</h4>
+                                        </div>
+                                        <div class="modal-body"><em class="underlined">{{ $profile->name }}</em> kullanıcısının sisteme olan erişimini aktif hale getiriyorsunuz. <br><br>Emin misiniz? </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Vazgeç</button>
+                                            <button type="submit" class="btn yellow">Blokeyi Kaldır.</button>
+                                        </div>
+                                        {!! Form::close(); !!}
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
                             @else
-                                @if($profile->isBlocked)
-                                <a class="btn btn-circle yellow btn-sm" data-toggle="modal" href="#blockProfile"> Blokeyi Kaldır </a>
-                                <div class="modal fade" id="blockProfile" tabindex="-1" role="basic" aria-hidden="true">
-                                    <div class="">
-                                        <div class="modal-content">
-                                            {!! Form::open(array('route' => 'profiles.admin.unblock')) !!}
-                                            <input type="hidden" name="id" value="{{ $profile->id }}">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                                <h4 class="modal-title">Kullanıcı Blokesini Kaldır</h4>
-                                            </div>
-                                            <div class="modal-body"><em class="underlined">{{ $profile->name }}</em> kullanıcısının sisteme olan erişimini aktif hale getiriyorsunuz. <br><br>Emin misiniz? </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Vazgeç</button>
-                                                <button type="submit" class="btn yellow">Blokeyi Kaldır.</button>
-                                            </div>
-                                            {!! Form::close(); !!}
+                            <a class="btn btn-circle red btn-sm" data-toggle="modal" href="#blockProfile"> Bloke Et </a>
+                            <div class="modal fade" id="blockProfile" tabindex="-1" role="basic" aria-hidden="true">
+                                <div class="">
+                                    <div class="modal-content">
+                                        {!! Form::open(array('route' => 'profiles.admin.block')) !!}
+                                        <input type="hidden" name="id" value="{{ $profile->id }}">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <h4 class="modal-title">Kullanıcıyı Bloke Et</h4>
                                         </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                                @else
-                                <a class="btn btn-circle red btn-sm" data-toggle="modal" href="#blockProfile"> Bloke Et </a>
-                                <div class="modal fade" id="blockProfile" tabindex="-1" role="basic" aria-hidden="true">
-                                    <div class="">
-                                        <div class="modal-content">
-                                            {!! Form::open(array('route' => 'profiles.admin.block')) !!}
-                                            <input type="hidden" name="id" value="{{ $profile->id }}">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                                <h4 class="modal-title">Kullanıcıyı Bloke Et</h4>
-                                            </div>
-                                            <div class="modal-body"><em class="underlined">{{ $profile->name }}</em> kullanıcısının sisteme olan erişimini engelliyorsunuz. <br><br>Emin misiniz? </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn dark btn-outline" data-dismiss="modal">Vazgeç</button>
-                                                <button type="submit" class="btn red">Bloke Et</button>
-                                            </div>
-                                            {!! Form::close(); !!}
+                                        <div class="modal-body"><em class="underlined">{{ $profile->name }}</em> kullanıcısının sisteme olan erişimini engelliyorsunuz. <br><br>Emin misiniz? </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Vazgeç</button>
+                                            <button type="submit" class="btn red">Bloke Et</button>
                                         </div>
-                                        <!-- /.modal-content -->
+                                        {!! Form::close(); !!}
                                     </div>
-                                    <!-- /.modal-dialog -->
+                                    <!-- /.modal-content -->
                                 </div>
-                                @endif
+                                <!-- /.modal-dialog -->
+                            </div>
                             @endif
+                        @endif
                     </div>
                     <div class="profile-usermenu">
                         <ul class="nav">
